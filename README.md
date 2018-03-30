@@ -23,7 +23,7 @@ The threads use the counter to add and subtract values.
 | AtomicLong for total    |                    |                 |
 
 ## 1. Using unsynchronized counter object
-1.1. The total not always same but the total should be zero because each thread are running parallel to return the total.
+1.1. The total not always same but the total should be zero because each thread are running parallel to return the total.\n
 1.2. limit = 10,000,000 running time = 0.02178767.
 
 ## 2. Implications for Multi-threaded Applications
