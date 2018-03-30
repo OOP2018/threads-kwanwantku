@@ -17,18 +17,17 @@ The threads use the counter to add and subtract values.
 
 | Counter class           | Limit              | Runtime (sec)   |
 |:------------------------|:-------------------|-----------------|
-| Unsynchronized counter  |                    |                 |
+| Unsynchronized counter  |  10,000,000        |  0.02178767     |
 | Using ReentrantLock     |                    |                 |
 | Syncronized method      |                    |                 |
 | AtomicLong for total    |                    |                 |
 
 ## 1. Using unsynchronized counter object
-
-answer the questions (1.1 - 1.3)
+1.1. The total not always same but the total should be zero because each thread are running parallel to return the total.
+1.2. limit = 10,000,000 running time = 0.02178767.
 
 ## 2. Implications for Multi-threaded Applications
-
-How might this affect real applications?  
+It effect to getting the correct amount, when they do any transaction likes deposit, withdraw or transfer. They using same thread to deposit or withdraw. It can occur to get the minus amount likes -100 because from sharing thread together. It can occur this. It’s called race condition. I suggested to separate thread to reduce this problem.
 
 ## 3. Counter with ReentrantLock
 
