@@ -3,7 +3,7 @@ public class ThreadSum {
 		// upper limit of numbers to add/subtract to Counter
 		final int LIMIT = 10000000;
 		// The counter that accumulates a total.
-		Counter counter = new CounterWithLock();
+		Counter counter = new SynchronounsCounter();
 		runThreads(counter, LIMIT);
 	}
 

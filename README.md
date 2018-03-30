@@ -19,11 +19,11 @@ The threads use the counter to add and subtract values.
 |:------------------------|:-------------------|-----------------|
 | Unsynchronized counter  |  10,000,000        |  0.02178767     |
 | Using ReentrantLock     |  10,000,000        |  2.35430067     |
-| Syncronized method      |                    |                 |
+| Syncronized method      |  10,000,000        |  0.89897267     |
 | AtomicLong for total    |                    |                 |
 
 ## 1. Using unsynchronized counter object
-	1.1) The total not always same but the total should be zero Because They using the same counter and also running parallel each other together. The two thread aren’t exactly inter-leaved. 
+	1.1. The total not always same but the total should be zero Because They using the same counter and also running parallel each other together. The two thread aren’t exactly inter-leaved. 
 	Sometimes, the second thread seems to jump ahead of the 1st thread. So, this is why counter is not zero and not same each time.
 	limit -> 1000
 	--------------------------------------
@@ -39,7 +39,7 @@ The threads use the counter to add and subtract values.
 	total -> 0
 	running time average -> 0.001072 sec.
 	
-	1.2) limit -> 10,000,000
+	1.2. limit -> 10,000,000
 	first running time ->  0.023360 sec.
 	second running time -> 0.019173 sec.
 	third running time -> 0.022830 sec.
@@ -54,7 +54,7 @@ The threads use the counter to add and subtract values.
 
 ## 3. Counter with ReentrantLock
 
-	3.1) It's always zero.
+	3.1. It's always zero.
 	limit -> 10,000,000
 	first running time -> 1.968739 sec.
 	second running time -> 2.393264 sec.
@@ -65,6 +65,7 @@ The threads use the counter to add and subtract values.
 	They running first task until finish, The second task can run after that. 
 	It's not like unsynchronized counter that do first task and second task go 
 	to use the same resource when first task doesn't finish.
+	
 	3.3. ReentrantLock can choose threat to using resource by order and manipulated
 	the task that already using resource or do something by protected the another
 	task to not using resource on the same time. It using it when the task using
@@ -73,12 +74,16 @@ The threads use the counter to add and subtract values.
 	3.4. Because to make the task using resource or do something finish 
 	before called the next task to use it for run thread.
 ## 4. Counter with synchronized method
-4.1.It's total equals to zero.
+	4.1. The total always zero
+		first running time ->   0.836344 sec.
+		second running time -> 0.932210 sec.
+		third running time -> 0.928364 sec.
+		running time average -> 0.89897267 sec.
+	4.2 Becaues the synchronus are allow only one thread and opposite to asynchronus that do first thread finish and next thread can do it.
+	4.3 Synchronized mean the task cannot be executed by two times at the same time. Use it when have the same task and using same resource to avoid race condition.
 
 ## 5. Counter with AtomicLong
-
-answer question 5
-
+	5.1. 
 ## 6. Analysis of Results
 
 answer question 6

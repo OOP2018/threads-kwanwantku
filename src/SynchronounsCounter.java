@@ -5,5 +5,6 @@ public class SynchronounsCounter extends Counter {
 		// define the superclass attribute (total) as protected and
 		// directly add to the total here. Don't define a new attribute
 		// in this class!
+		super.total += amount;
 	}
 }
