@@ -20,7 +20,7 @@ The threads use the counter to add and subtract values.
 | Unsynchronized counter  |  10,000,000        |  0.02178767     |
 | Using ReentrantLock     |  10,000,000        |  2.35430067     |
 | Syncronized method      |  10,000,000        |  0.89897267     |
-| AtomicLong for total    |                    |                 |
+| AtomicLong for total    |  10,000,000        |  0.48312433     |
 
 ## 1. Using unsynchronized counter object
 	1.1. The total not always same but the total should be zero Because They using the same counter and also running parallel each other together. The two thread aren’t exactly inter-leaved. 
@@ -83,10 +83,11 @@ The threads use the counter to add and subtract values.
 	4.3 Synchronized mean the task cannot be executed by two times at the same time. Use it when have the same task and using same resource to avoid race condition.
 
 ## 5. Counter with AtomicLong
-	5.1. 
+	5.1. Because AtomicCounter already have lock and unlock in their own. So, It can use not synchronized method.
+	5.2. When you have a lot of thread to using resource.
 ## 6. Analysis of Results
-
-answer question 6
+	6.1. AtomicLong > not Synchronized > ReentrantLock 
+	6.2. Synchronized method because it's using not too much time but if you have a lot of thread I recommend to use ReentrantLock because it's suitable for a lot of thread.
 
 ## 7. Using Many Threads (optional)
 
